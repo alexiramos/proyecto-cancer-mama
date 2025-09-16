@@ -31,56 +31,60 @@ $sidebar-border-radius: 0.375rem;
 // =========================
 
 // --- Navbar ---
+
 .navbar {
+  &.bg-custom {
+    background-color: #2c3e50; // Azul (puedes cambiarlo)
+  }
+
   .navbar-brand {
     font-weight: $headings-font-weight;
     font-size: 1.5rem;
+    color: #ffffff; // Texto blanco sobre fondo oscuro
     &:hover {
-      color: $primary;
+      color: $primary; // Amarillo de tu paleta
     }
   }
 
   .nav-link {
     font-family: $font-family-sans-serif;
     font-weight: 500;
-    color: #000000;
+    color: #ffffff; // blanco
+    transition: color 0.3s ease;
     &:hover {
-      color: $primary;
+      color: $primary; // Amarillo
+    }
+  }
+
+  .btn-primary {
+    background-color: $primary;
+    border: none;
+    color: #000;
+    &:hover {
+      background-color: darken($warning, 10%);
     }
   }
 }
 
 // --- Hero Banner ---
-.hero-banner-container {
-  height: 60vh;
-  min-height: 600px;
-  overflow: hidden;
-
-  .hero-banner-image {
-    object-fit: cover;
-    filter: brightness(0.7);
-  }
+/* Footer personalizado */
+.footer-custom {
+  color: #007bff;
 }
-
-h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  cursor: pointer;
-
-  &:hover {
-    color: $warning;
-  }
+.footer-custom .nav-link {
+  color: #007bff;
+  min-width: 160px; /* equivalente a min-w-40 */
 }
-
-p.lead {
-  color: $warning;
-  margin-top: 2rem;
+.footer-custom .nav-link:hover {
+  text-decoration: underline;
 }
-
-.hero-banner-content p.lead {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 700;
+.footer-custom .social-icon {
+  color: #47569e;
+  transition: opacity 0.3s ease;
+  font-size: 1.5rem; /* tamaño de icono */
+}
+.footer-custom .social-icon:hover {
+  opacity: 0.75;
 }
 
 // --- Sidebar Dashboard ---
@@ -182,3 +186,168 @@ p.lead {
     opacity: 0.9;
   }
 }
+
+// 4. ESTILOS DE SERVICES PAGE
+
+.page-title {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  font-weight: 700;
+  color: #000000;
+}
+.service-section {
+  margin-bottom: 4rem;
+}
+
+.service-description {
+  font-size: 1.1rem;
+  color: #000000;
+}
+
+.main-content {
+  padding: 5rem 0;
+}
+.service-image {
+  border-radius: 1rem;
+  margin-top: 2rem;
+  max-width: 800px;
+  width: 100%;
+}
+.service-title {
+  font-weight: 600;
+  font-size: 1.75rem;
+  color: #000000;
+}
+//
+
+// 4. ESTILOS DE AboutPage
+.main-content {
+  padding: 5rem 0;
+}
+.page-section {
+  margin-bottom: 4rem;
+}
+.section-title {
+  margin-top: 5rem;
+  margin-bottom: rem;
+  font-weight: 700;
+  font-size: 2.25rem;
+  color: #000000;
+}
+
+.section-subtitle {
+  font-weight: 600;
+  font-size: 1.75rem;
+  color: #000000;
+  margin-bottom: 1.5rem;
+}
+
+.section-text {
+  font-size: 1.1rem;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.objective-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.objective-item {
+  font-size: 1.1rem;
+  color: #000000;
+  padding-left: 2.5rem;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.objective-item::before {
+  content: "\F26D";
+  font-family: "bootstrap-icons";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.5rem;
+  color: #a5b4fc;
+}
+
+.team-member {
+  text-align: center;
+}
+
+.team-member-img {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.team-member-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #000000;
+  margin-bottom: 0.25rem;
+}
+
+.team-member-title {
+  font-size: 0.9rem;
+  color: #3300ec;
+}
+//
+// 4. ESTILOS DE ContactPage
+.page-title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: #000000;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.contact-info-section,
+.contact-form-section {
+  margin-bottom: 3rem;
+}
+
+.section-heading {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #000000;
+  margin-bottom: 1.5rem;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #929292;
+  font-size: 0.9rem;
+}
+.info-value {
+  color: #000000;
+}
+.form-label {
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  background-color: #eef2ff;
+  border: none;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+}
+.form-control:focus {
+  background-color: #eef2ff;
+  box-shadow: 0 0 0 2px #c9052640;
+}
+.form-control::placeholder {
+  color: #94a3b8;
+}
+//

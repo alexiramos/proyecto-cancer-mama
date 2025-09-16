@@ -1,30 +1,52 @@
 // src/frontend/src/components/HeroBanner.jsx
 import React from "react";
-//import heroBannerImage from "../assets/images/hero_banner2.png";
-// Asegúrate de que la ruta sea correcta
-import heroBannerImage from "../../assets/images/hero_banner2.png";
+
+import heroBannerImage1 from "../../assets/images/hero_banner01.png";
+import heroBannerImage2 from "../../assets/images/hero_banner02.png";
+import heroBannerImage3 from "../../assets/images/hero_banner03.png";
 
 const HeroBanner = () => {
   return (
-    <div className="hero-banner-container position-relative text-white text-center d-flex align-items-center justify-content-center">
-      <img
-        src={heroBannerImage}
-        alt="Diagnóstico de Cáncer"
-        className="hero-banner-image position-absolute w-100 h-100"
-      />
-      <div className="hero-banner-content position-relative p-5">
-        <h1 className="display-4 fw-bold">
-          Diagnóstico Automatizado de Cáncer en El Salvador
-        </h1>
-        <p className="lead mt-5">
-          HealthVision es una plataforma web innovadora diseñada para mejorar la
-          precisión y eficiencia del diagnóstico de cáncer a través del análisis
-          automatizado del sistema radiológico. Nuestro objetivo es apoyar a los
-          profesionales de la salud en El Salvador, proporcionando herramientas
-          avanzadas para la detección temprana y el tratamiento oportuno del
-          cáncer.
-        </p>
+    <div id="carouselExample" className="carousel slide hero-carousel">
+      <div className="carousel-inner">
+        <div className="carousel-item active">
+          <img
+            src={heroBannerImage1}
+            className="d-block w-100"
+            alt="Diagnóstico de Cáncer 1"
+          />
+        </div>
+        <div className="carousel-item">
+          <img
+            src={heroBannerImage2}
+            className="d-block w-100"
+            alt="Diagnóstico de Cáncer 2"
+          />
+        </div>
+        <div className="carousel-item">
+          <img
+            src={heroBannerImage3}
+            className="d-block w-100"
+            alt="Diagnóstico de Cáncer 3"
+          />
+        </div>
       </div>
+      <button
+        className="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="prev">
+        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Anterior</span>
+      </button>
+      <button
+        className="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="next">
+        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Siguiente</span>
+      </button>
     </div>
   );
 };

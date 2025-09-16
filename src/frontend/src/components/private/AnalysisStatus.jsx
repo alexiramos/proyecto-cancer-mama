@@ -1,3 +1,4 @@
+// src/components/private/AnalysisStatus.jsx
 import React from "react";
 
 const AnalysisStatus = () => {

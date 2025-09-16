@@ -1,3 +1,4 @@
+// src/components/private/StatsSummary.jsx
 import React from "react";
 
 const StatsSummary = () => {

@@ -1,3 +1,4 @@
+// src/components/private/RecentResultsTable.jsx
 import React from "react";
 
 const RecentResultsTable = () => {
