@@ -1,4 +1,3 @@
-//src/frontend/src/pages/public/LoginPage.js
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../auth/AuthProvider";
@@ -30,7 +29,15 @@ function LoginPage() {
       const data = await response.json();
 
       if (response.ok) {
-        auth.login(data.usuario, data.access_token);
+        const usuario = data.usuario;
+        // Aseguramos que incluya nombres y apellidos
+        auth.login({
+          id_usuario: usuario.id_usuario,
+          nombres: usuario.nombres,
+          apellidos: usuario.apellidos,
+          correo: usuario.correo,
+          rol: usuario.rol
+        }, data.access_token);
       } else {
         setError(data.msg || "Error en el login");
       }
@@ -49,9 +56,7 @@ function LoginPage() {
       {/* Tabs */}
       <ul className="nav nav-tabs mb-4">
         <li className="nav-item">
-          <Link className="nav-link" to="/register">
-            Registro
-          </Link>
+          <Link className="nav-link" to="/register">Registro</Link>
         </li>
         <li className="nav-item">
           <span className="nav-link active">Inicio de Sesión</span>
@@ -90,9 +95,7 @@ function LoginPage() {
                     onChange={(e) => setPass(e.target.value)}
                     required
                   />
-                  <label htmlFor="password" className="text-muted">
-                    Contraseña
-                  </label>
+                  <label htmlFor="password" className="text-muted">Contraseña</label>
                 </div>
 
                 {error && <div className="alert alert-danger">{error}</div>}
@@ -101,16 +104,15 @@ function LoginPage() {
                 <button
                   type="submit"
                   className="btn btn-primary btn-lg w-100"
-                  disabled={loading}>
+                  disabled={loading}
+                >
                   {loading ? "Ingresando..." : "Iniciar Sesión"}
                 </button>
 
                 {/* Registro link */}
                 <p className="text-center mt-4 mb-0">
                   ¿No tienes una cuenta?{" "}
-                  <Link to="/register" className="text-decoration-none">
-                    Regístrate
-                  </Link>
+                  <Link to="/register" className="text-decoration-none">Regístrate</Link>
                 </p>
               </form>
             </div>
