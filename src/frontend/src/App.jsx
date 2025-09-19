@@ -1,5 +1,5 @@
 // src/App.jsx
-import React from "react";
+import React, { Children } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import PublicLayout from "./assets/layouts/PublicLayout";
@@ -10,9 +10,15 @@ import HomePage from "./pages/public/HomePage";
 import ContactPage from "./pages/public/ContactPage";
 import ServicesPage from "./pages/public/ServicesPage";
 import AboutPage from "./pages/public/AboutPage";
+import LoginPage from "./pages/public/LoginPage"
 
 // Página privada
 import DashboardPage from "./pages/private/DashboardPage";
+import ProtectedRoute from "./pages/private/ProtectedRoute";
+import RegisterPage from "./pages/public/RegisterPage";
+import PatientRegistration from "./pages/private/PatientRegistration";
+import PatientList from "./pages/private/PatientList";
+
 
 function App() {
   return (
@@ -23,11 +29,16 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Route>
 
       {/* Rutas privadas */}
-      <Route element={<PrivateLayout />}>
-        <Route path="/dashboard/*" element={<DashboardPage />} />
+      {/*<Route element={<PrivateLayout />}>*/}
+      <Route element={<ProtectedRoute allowedRoles={["medico"]} />}>
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/patientregistration" element={<PatientRegistration />} />
+        <Route path="/patients" element={<PatientList />} />
       </Route>
 
       {/* Ruta 404 */}

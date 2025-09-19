@@ -1,4 +1,3 @@
-//src/frontend/src/auth/AuthProvider.js
 import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext({
@@ -7,22 +6,40 @@ const AuthContext = createContext({
   token: null,
   login: () => {},
   logout: () => {},
+  loading: true, // 👈 nuevo estado
 });
 
 export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(true); // 👈 inicia en "cargando"
 
-  // Al iniciar, cargar desde localStorage si ya estaba logueado
+  // Recuperar sesión al iniciar
   useEffect(() => {
     const savedToken = localStorage.getItem("token");
-    const savedUser = localStorage.getItem("user");
 
-    if (savedToken && savedUser) {
-      setToken(savedToken);
-      setUser(JSON.parse(savedUser));
-      setIsAuthenticated(true);
+    if (savedToken) {
+      fetch("http://127.0.0.1:5000/auth/me", {
+        headers: {
+          Authorization: `Bearer ${savedToken}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.usuario) {
+            setUser(data.usuario);
+            setToken(savedToken);
+            setIsAuthenticated(true);
+            localStorage.setItem("user", JSON.stringify(data.usuario));
+          } else {
+            logout();
+          }
+        })
+        .catch(() => logout())
+        .finally(() => setLoading(false)); // 👈 terminamos de verificar
+    } else {
+      setLoading(false);
     }
   }, []);
 
@@ -46,7 +63,8 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, user, token, login, logout }}>
+      value={{ isAuthenticated, user, token, login, logout, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, RouterProvider } from 'react-router-dom'
 // 5. COMPONENTE PRINCIPAL
 import App from './App.jsx'
 // 4. ESTILOS PROPIOS (si existen)
@@ -15,15 +15,18 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 // 3. ICONOS DE BOOTSTRAP
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import { AuthProvider } from './auth/AuthProvider.jsx'
 
 
 // 6. RENDER DE LA APLICACIÓN
 const root = createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AuthProvider>
   </StrictMode>
 );
 
