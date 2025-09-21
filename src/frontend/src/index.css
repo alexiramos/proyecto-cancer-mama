@@ -1,0 +1,17 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  /* 
+    Se elimina 'display: flex' y 'place-items: center' para que el layout
+    de la aplicación ocupe toda la página y no se centre verticalmente.
+    Los estilos de fuente, color y fondo son manejados por Bootstrap.
+  */
+  min-width: 320px;
+  min-height: 100vh;
+}

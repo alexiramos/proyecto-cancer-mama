@@ -1,0 +1,17 @@
+/*#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}*/
+
+#root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* src/App.css */
+body {
+  padding-top: 56px; /* Ajusta el valor si el navbar es más alta */
+}
